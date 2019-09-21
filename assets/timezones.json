@@ -1,0 +1,169 @@
+{
+  "locations": [
+    {
+      "name" : "Military",
+      "timezones" : [
+        {
+          "abbreviation" : "A",
+          "name" : "Alpha Time Zone",
+          "offset" : "+1"
+        },
+        {
+          "abbreviation" : "B",
+          "name" : "Bravo Time Zone",
+          "offset" : "+2"
+        },
+        {
+          "abbreviation" : "D",
+          "name" : "Delta Time Zone",
+          "offset" : "+4"
+        },
+        {
+          "abbreviation" : "E",
+          "name" : "Echo Time Zone",
+          "offset" : "+5"
+        },
+        {
+          "abbreviation" : "F",
+          "name" : "Foxtrot Time Zone",
+          "offset" : "+6"
+        },
+        {
+          "abbreviation" : "G",
+          "name" : "Golf Time Zone",
+          "offset" : "+7"
+        },
+        {
+          "abbreviation" : "H",
+          "name" : "Hotel Time Zone",
+          "offset" : "+8"
+        },
+        {
+          "abbreviation" : "I",
+          "name" : "India Time Zone",
+          "offset" : "+9"
+        },
+        {
+          "abbreviation" : "K",
+          "name" : "Kilo Time Zone",
+          "offset" : "+10"
+        },
+        {
+          "abbreviation" : "L",
+          "name" : "Lima Time Zone",
+          "offset" : "+11"
+        },
+        {
+          "abbreviation" : "M",
+          "name" : "Mike Time Zone",
+          "offset" : "+12"
+        },
+        {
+          "abbreviation" : "M",
+          "name" : "alpha time zone",
+          "offset" : "+1"
+        },
+        {
+          "abbreviation" : "N",
+          "name" : "November Time Zone",
+          "offset" : "-1"
+        },
+        {
+          "abbreviation" : "O",
+          "name" : "Oscar Time Zone",
+          "offset" : "-2"
+        },
+        {
+          "abbreviation" : "P",
+          "name" : "Papa Time Zone",
+          "offset" : "-3"
+        },
+        {
+          "abbreviation" : "Q",
+          "name" : "Quebec Time Zone",
+          "offset" : "-4"
+        },
+        {
+          "abbreviation" : "R",
+          "name" : "Romeo Time Zone",
+          "offset" : "-5"
+        },
+        {
+          "abbreviation" : "S",
+          "name" : "Sierra Time Zone",
+          "offset" : "-6"
+        },
+        {
+          "abbreviation" : "T",
+          "name" : "Tango Time Zone",
+          "offset" : "-7"
+        },
+        {
+          "abbreviation" : "U",
+          "name" : "Uniform Time Zone",
+          "offset" : "-8"
+        },
+        {
+          "abbreviation" : "V",
+          "name" : "Victor Time Zone",
+          "offset" : "-9"
+        },
+        {
+          "abbreviation" : "W",
+          "name" : "Whiskey Time Zone",
+          "offset" : "-10"
+        },
+        {
+          "abbreviation" : "X",
+          "name" : "X-ray Time Zone",
+          "offset" : "-11"
+        },
+        {
+          "abbreviation" : "Y",
+          "name" : "Yankee Time Zone",
+          "offset" : "-12"
+        },
+        {
+          "abbreviation" : "Z",
+          "name" : "Zulu Time Zone",
+          "offset" : "+0"
+        }
+      ]
+    },
+
+
+
+
+
+    {
+      "name" : "Australia",
+      "timezones" : [
+        {
+          "abbreviation" : "ACDT",
+          "name" : "Australian Central Daylight Time",
+          "offset" : "+10:30"
+        },
+        {
+          "abbreviation" : "CDT",
+          "name" : "Central Daylight Time",
+          "offset" : "+10:30"
+        },
+        {
+          "abbreviation" : "CDST",
+          "name" : "Central Daylight Savings Time",
+          "offset" : "+10:30"
+        },
+        {
+          "abbreviation" : "ACST",
+          "name" : "Australian Central Standard Time",
+          "offset" : "+9:30"
+        },
+        {
+          "abbreviation" : "CST",
+          "name" : "Central Standard Time",
+          "offset" : "+9:30"
+        }
+      ]
+    }
+  ]
+}

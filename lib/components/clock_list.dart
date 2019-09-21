@@ -1,41 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:world_clock/components/clock_tile.dart';
-import 'package:world_clock/data/clock.dart';
+import 'package:world_clock/providers/clocks_provider.dart';
 
-class ClockList extends StatefulWidget {
-  final List<Clock> clocks;
+class ClockList extends StatelessWidget {
   final bool show24HourFormat;
   final bool showSeconds;
 
-  ClockList({this.clocks, this.show24HourFormat, this.showSeconds});
-
-  @override
-  _ClockListState createState() => _ClockListState();
-}
-
-class _ClockListState extends State<ClockList>
-    with AutomaticKeepAliveClientMixin<ClockList> {
-  @override
-  bool get wantKeepAlive => true;
+  ClockList({this.show24HourFormat, this.showSeconds});
 
   @override
   Widget build(BuildContext context) {
-    return _buildList(context);
-  }
-
-  ListView _buildList(context) {
-    return ListView.builder(
-        itemCount: widget.clocks.length,
-        itemBuilder: (context, int) {
-          return ClockTile(
-            clock: widget.clocks[int],
-            show24HourTime: widget.show24HourFormat,
-            showSeconds: widget.showSeconds,
-            backgroundColor: Theme.of(context).backgroundColor,
-            timeColor: Theme.of(context).accentTextTheme.title.color,
-            dateColor: Theme.of(context).accentTextTheme.title.color,
-            cityColor: Theme.of(context).textTheme.title.color,
-          );
-        });
+    return Consumer <ClocksProvider>(
+      builder: (context, clocksProvider, child) {
+        return ListView.builder(
+          itemCount: clocksProvider.clocks.length,
+          itemBuilder: (context, clockIndex) {
+            return ClockTile(
+              tapFunction: () {
+                Navigator.pushNamed(context, "/clocks/$clockIndex");
+              },
+              clock: clocksProvider.clocks[clockIndex],
+              backgroundColor: Theme
+                  .of(context)
+                  .backgroundColor,
+              timeColor: Theme
+                  .of(context)
+                  .accentTextTheme
+                  .title
+                  .color,
+              dateColor: Theme
+                  .of(context)
+                  .accentTextTheme
+                  .title
+                  .color,
+              labelColor: Theme
+                  .of(context)
+                  .textTheme
+                  .title
+                  .color,
+            );
+          },
+        );
+      },
+    );
   }
 }
