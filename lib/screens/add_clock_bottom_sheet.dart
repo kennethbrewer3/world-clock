@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:world_clock/data/time_zone.dart';
+import 'package:world_clock/data/time_zone_region.dart';
 import 'package:world_clock/providers/add_clock_provider.dart';
 
 class AddClockBottomSheet extends StatelessWidget {
@@ -29,7 +31,7 @@ class AddClockBottomSheet extends StatelessWidget {
                 textAlign: TextAlign.center,
                 autofocus: true,
               ),
-              DropdownButton<String>(
+              DropdownButton<TimeZoneRegion>(
                 value: addClockProvider.timeZoneRegion,
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 24,
@@ -43,6 +45,21 @@ class AddClockBottomSheet extends StatelessWidget {
                 ),
                 onChanged: addClockProvider.updateTimeZoneRegionDropdown,
                 items: addClockProvider.timeZoneRegionList,
+              ),
+              DropdownButton<TimeZone>(
+                value: addClockProvider.timeZone,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                underline: Container(
+                  height: 2,
+                  color: Theme
+                      .of(context)
+                      .appBarTheme
+                      .color,
+                ),
+                onChanged: addClockProvider.updateTimeZoneDropdown,
+                items: addClockProvider.timeZoneList,
               ),
               FlatButton(
                 child: Text(

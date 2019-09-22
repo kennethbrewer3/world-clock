@@ -5,60 +5,54 @@ import 'package:intl/intl.dart';
 import 'package:world_clock/data/clock.dart';
 import 'dart:collection';
 import 'package:world_clock/data/time_zone.dart';
+import 'package:world_clock/data/time_zone_region.dart';
 
 class ClocksProvider with ChangeNotifier {
-//  DateTime _baseTime = DateTime.now().toUtc();
   Timer timer;
   bool _show24HourFormat = false;
   bool _showSeconds = false;
 
-  static final TimeZone utc = TimeZone(
-      abbreviation: "GMT",
-      name: "Greenwich Mean Time",
-      region: "Europe Africa North America Antarctica",
-      standardOffset: 0.0,
-      daylightSavingsTimeOffset: 0.0
-  );
-
-  static final TimeZone edt = TimeZone(
-      abbreviation: "EDT",
-      name: "Eastern Daylight Time",
-      region: "North America",
-      standardOffset: -4.0,
-      daylightSavingsTimeOffset: -4.0
-  );
-
-  static final TimeZone cdt = TimeZone(
-      abbreviation: "CDT",
-      name: "Central Daylight Time",
-      region: "North America",
-      standardOffset: -5.0,
-      daylightSavingsTimeOffset: -5.0
-  );
-
-  static final TimeZone pdt = TimeZone(
-      abbreviation: "PDT",
-      name: "Pacific Daylight Time",
-      region: "North America",
-      standardOffset: -7.0,
-      daylightSavingsTimeOffset: -7.0
+  static final TimeZoneRegion northAmerica = TimeZoneRegion.of(
+    "North America",
+    [
+      TimeZone(
+        abbreviation: "GMT",
+        name: "Greenwich Mean Time",
+        offset: Duration(hours: 0),
+      ),
+      TimeZone(
+        abbreviation: "EDT",
+        name: "Eastern Daylight Time",
+        offset: Duration(hours: -4),
+      ),
+      TimeZone(
+        abbreviation: "CDT",
+        name: "Central Daylight Time",
+        offset: Duration(hours: -5),
+      ),
+      TimeZone(
+        abbreviation: "PDT",
+        name: "Pacific Daylight Time",
+        offset: Duration(hours: -7),
+      )
+    ],
   );
 
   List<Clock> _clocks = [
     Clock(
-      timeZone: utc,
+      timeZone: northAmerica.timeZones[0],
       label: 'UTC',
     ),
     Clock(
-      timeZone: edt,
+      timeZone: northAmerica.timeZones[1],
       label: 'NYC',
     ),
     Clock(
-      timeZone: cdt,
+      timeZone: northAmerica.timeZones[2],
       label: 'Dallas',
     ),
     Clock(
-      timeZone: pdt,
+      timeZone: northAmerica.timeZones[3],
       label: 'Sacramento',
     )
   ];
@@ -75,25 +69,7 @@ class ClocksProvider with ChangeNotifier {
   }
 
   DateTime _getNowPlusOffset(Clock clock) {
-    int utcHours = 0;
-
-    if (clock.utcOffset < 0) {
-      utcHours = clock.utcOffset.ceil();
-    } else {
-      utcHours = clock.utcOffset.floor();
-    }
-
-    int utcMinutes = (60 * (clock.utcOffset - utcHours)).toInt();
-
-    return DateTime
-        .now()
-        .toUtc()
-        .add(
-          Duration(hours: utcHours)
-        )
-        .add(
-          Duration(minutes: utcMinutes)
-        );
+    return DateTime.now().toUtc().add(clock.utcOffset);
   }
 
   String getTime(Clock clock) {
@@ -192,6 +168,7 @@ class ClocksProvider with ChangeNotifier {
       _clocks.insert(position2, clock1);
       _clocks.insert(position1, clock2);
       notifyListeners();
+      return true;
     }
   }
 }
