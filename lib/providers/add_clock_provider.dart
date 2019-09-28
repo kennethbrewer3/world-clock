@@ -1,109 +1,104 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:world_clock/data/clock.dart';
 import 'package:world_clock/data/time_zone.dart';
 import 'package:world_clock/data/time_zone_region.dart';
+import 'package:world_clock/providers/clocks_provider.dart';
+import 'package:world_clock/timezoneloader/duration_parser.dart';
 
 class AddClockProvider with ChangeNotifier {
-  List<TimeZoneRegion> _timeZoneRegionList = <TimeZoneRegion>[
-    TimeZoneRegion.of('Africa', []),
-    TimeZoneRegion.of('Antarctica', []),
-    TimeZoneRegion.of('Asia', []),
-    TimeZoneRegion.of('Atlantic', []),
-    TimeZoneRegion.of('Australia', []),
-    TimeZoneRegion.of('Caribbean', []),
-    TimeZoneRegion.of('Central America', []),
-    TimeZoneRegion.of('Europe', []),
-    TimeZoneRegion.of('Indian Ocean', []),
-    TimeZoneRegion.of('Military', []),
-    TimeZoneRegion.of(
-      "North America",
-      [
-        TimeZone(
-          abbreviation: "GMT",
-          name: "Greenwich Mean Time",
-          offset: Duration(hours: 0),
-        ),
-        TimeZone(
-          abbreviation: "EDT",
-          name: "Eastern Daylight Time",
-          offset: Duration(hours: -4),
-        ),
-        TimeZone(
-          abbreviation: "CDT",
-          name: "Central Daylight Time",
-          offset: Duration(hours: -5),
-        ),
-        TimeZone(
-          abbreviation: "PDT",
-          name: "Pacific Daylight Time",
-          offset: Duration(hours: -7),
-        )
-      ],
-    ),
-    TimeZoneRegion.of('Pacific', []),
-    TimeZoneRegion.of('South America', []),
-  ];
+  List<TimeZoneRegion> _timeZoneRegionList;
+  String _newClockLabel = "";
+  bool addButtonEnable = false;
 
-  TimeZoneRegion _timeZoneRegion;
-  TimeZone _timeZone;
+  TimeZoneRegion timeZoneRegion;
+  TimeZone timeZone;
 
-  AddClockProvider() {
-    _timeZoneRegion = _timeZoneRegionList[0];
+  List<TimeZoneRegion> get timeZoneRegionList {
+    return [..._timeZoneRegionList];
   }
 
-  List<DropdownMenuItem<TimeZoneRegion>> get timeZoneRegionList {
-    return _timeZoneRegionList
-        .map<DropdownMenuItem<TimeZoneRegion>>((TimeZoneRegion timeZoneRegion) {
-      return DropdownMenuItem<TimeZoneRegion>(
-        value: timeZoneRegion,
-        child: Text(timeZoneRegion.name),
-      );
+  void updateClockLabel(String clockTitle) {
+    _newClockLabel = clockTitle;
+    if (_newClockLabel.isNotEmpty) {
+      addButtonEnable = true;
+    } else {
+      addButtonEnable = false;
     }
-    ).toList();
+    notifyListeners();
+  }
+
+  void addClockButtonListener(BuildContext context) {
+    ClocksProvider provider = Provider.of<ClocksProvider>(context);
+    Clock newClock = Clock(
+      timeZone: timeZone,
+      label: _newClockLabel,
+    );
+
+    if (provider.clocks.contains(newClock)) {
+      return;
+    }
+
+    provider.addClock(newClock);
+    Navigator.pop(context);
+  }
+
+  set timeZoneRegionList(List<TimeZoneRegion> value) {
+    _timeZoneRegionList = value;
+    timeZoneRegion = value[0];
+    timeZone = value[0].timeZones[0];
+  }
+
+  UnmodifiableListView<
+      DropdownMenuItem<TimeZoneRegion>> _mapTimeZoneRegionList() {
+    return UnmodifiableListView<
+        DropdownMenuItem<TimeZoneRegion>>(
+        timeZoneRegionList.map<DropdownMenuItem<TimeZoneRegion>>((
+            TimeZoneRegion timeZoneRegion) {
+          return DropdownMenuItem<TimeZoneRegion>(
+            value: timeZoneRegion,
+            child: Text(
+                timeZoneRegion.name,
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+            ),
+          );
+        }
+        ).toList());
+  }
+
+  UnmodifiableListView<
+      DropdownMenuItem<TimeZoneRegion>> get timeZoneRegionDropDownMenuItemList {
+    return _mapTimeZoneRegionList();
   }
 
   List<DropdownMenuItem<TimeZone>> get timeZoneList {
-    return _timeZoneRegion.timeZones
+    return timeZoneRegion.timeZones
         .map<DropdownMenuItem<TimeZone>>((TimeZone timeZone) {
       return DropdownMenuItem<TimeZone>(
         value: timeZone,
-        child: Text("${_formatDuration(timeZone.offset)} ${timeZone.name}"),
+        child: Text(
+            "${DurationParser.formatDuration(timeZone.offset)} ${timeZone.name}",
+            style: TextStyle(
+              fontSize: 18,
+            ),
+        ),
       );
     }
     ).toList();
   }
 
-  String _formatDuration(Duration duration) {
-    Duration minutesDuration = duration - Duration(hours: duration.inHours);
-    String sign = duration.isNegative ? "" : "+";
-    String minutes = (minutesDuration.inMinutes < 10
-        ? "0${minutesDuration.inMinutes}"
-        : "${minutesDuration.inMinutes}");
-    return "$sign${duration.inHours}:${minutes.replaceAll("-", "")}";
-  }
-
   void updateTimeZoneRegionDropdown(TimeZoneRegion newTimeZoneRegion) {
-    _timeZoneRegion = newTimeZoneRegion;
+    timeZoneRegion = newTimeZoneRegion;
+    timeZone = timeZoneRegion.timeZones[0];
     notifyListeners();
   }
 
   void updateTimeZoneDropdown(TimeZone newTimeZone) {
-    _timeZone = newTimeZone;
+    timeZone = newTimeZone;
     notifyListeners();
-  }
-
-  TimeZoneRegion get timeZoneRegion {
-    return _timeZoneRegion;
-  }
-
-  void setTimeZoneRegion(TimeZoneRegion newRegion) {
-    _timeZoneRegion = newRegion;
-  }
-
-  TimeZone get timeZone {
-    return _timeZone;
-  }
-
-  set timeZone(TimeZone timeZone) {
-    this._timeZone = timeZone;
   }
 }

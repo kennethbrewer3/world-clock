@@ -27,13 +27,12 @@ dependencies:
   auto_size_text: ^2.0.1
   intl: 0.15.7
   native_device_orientation: ^0.2.0
-  provider: ^3.0.0
+  provider: ^3.1.0
   sembast: ^2.0.1+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

@@ -10,4 +10,11 @@ class TimeZone {
     @required this.name,
     @required this.offset,
   });
+
+  @override
+  String toString() {
+    return "abbreviation: $abbreviation, name: $name, offset: $offset";
+  }
+
+
 }

@@ -32,4 +32,21 @@ class TimeZoneRegion {
   UnmodifiableListView<TimeZone> get timeZones {
     return UnmodifiableListView(_timeZones);
   }
+
+  @override
+  String toString() {
+    return "$name: $timeZones";
+  }
+
+  @override
+  bool operator == (Object timeZoneRegion) {
+    return timeZoneRegion is TimeZoneRegion
+        && this.name == timeZoneRegion.name
+        && _timeZones == timeZoneRegion._timeZones;
+  }
+
+  @override
+  int get hashCode {
+    return this.name.hashCode + _timeZones.hashCode;
+  }
 }
