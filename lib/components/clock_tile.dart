@@ -15,6 +15,7 @@ class ClockTile extends StatelessWidget {
 
   static const clockTextSize = 30.0;
   static const labelTextSize = 30.0;
+  static const timeZoneLabelTextSize = 20.0;
 
   ClockTile({this.clock,
     this.backgroundColor,
@@ -64,6 +65,13 @@ class ClockTile extends StatelessWidget {
                       color: labelColor,
                     ),
                   ),
+                  Text(
+                    clock.timeZone.name,
+                    style: TextStyle(
+                      fontSize: ClockTile.timeZoneLabelTextSize,
+                      color: labelColor,
+                    ),
+                  )
                 ],
               ),
             ),

@@ -29,6 +29,7 @@ dependencies:
   native_device_orientation: ^0.2.0
   provider: ^3.1.0
   sembast: ^2.0.1+2
+  path_provider: ^0.5.0+1
 
 dev_dependencies:
   flutter_test:

@@ -8,7 +8,6 @@ class LoadTimeZoneRegionProvider {
   Future<List<TimeZoneRegion>> loadTimeZoneRegionList() async {
     TimeZoneFileHandler handler = TimeZoneFileHandler();
     timeZoneRegionList = await handler.parseTimeZones();
-    print(timeZoneRegionList);
     return timeZoneRegionList;
   }
 }

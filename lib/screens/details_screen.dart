@@ -16,8 +16,7 @@ class ClockDetails extends StatelessWidget {
         .split("/")
         .last);
     return Provider
-        .of<ClocksProvider>(context)
-        .clocks[clockIndex];
+        .of<List<Clock>>(context)[clockIndex];
   }
 
   @override

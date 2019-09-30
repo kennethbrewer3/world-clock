@@ -30,14 +30,16 @@ class AddClockProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addClockButtonListener(BuildContext context) {
+  void addClockButtonListener(BuildContext context) async {
     ClocksProvider provider = Provider.of<ClocksProvider>(context);
     Clock newClock = Clock(
       timeZone: timeZone,
       label: _newClockLabel,
     );
 
-    if (provider.clocks.contains(newClock)) {
+    List<Clock> clocks = await provider.clocks;
+
+    if (clocks.contains(newClock)) {
       return;
     }
 
