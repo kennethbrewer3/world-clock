@@ -5,13 +5,20 @@ class ReusableCard extends StatelessWidget {
   final Color color;
   final Widget cardChild;
   final Function tapFunction;
+  final Function longPressFunction;
 
-  ReusableCard({@required this.color, this.cardChild, this.tapFunction});
+  ReusableCard(
+      {@required this.color,
+        this.cardChild,
+        this.tapFunction,
+        this.longPressFunction}
+        );
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: tapFunction,
+      onLongPress: longPressFunction,
       child: Container(
         child: cardChild,
         margin: EdgeInsets.all(15),

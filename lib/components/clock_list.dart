@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:world_clock/components/clock_tile.dart';
 import 'package:world_clock/data/clock.dart';
+import 'package:world_clock/providers/clocks_provider.dart';
 
 class ClockList extends StatelessWidget {
   final bool show24HourFormat;
@@ -19,6 +20,11 @@ class ClockList extends StatelessWidget {
             return ClockTile(
               tapFunction: () {
                 Navigator.pushNamed(context, "/clocks/$clockIndex");
+              },
+              longPressFunction: () {
+                Provider
+                    .of<ClocksProvider>(context)
+                    .removeClock(clockList[clockIndex]);
               },
               clock: clockList[clockIndex],
               backgroundColor: Theme
