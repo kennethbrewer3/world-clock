@@ -72,6 +72,17 @@ class ClockDetails extends StatelessWidget {
                           .color,
                     ),
                   ),
+                  Text(
+                    clock.timeZone.name,
+                    style: TextStyle(
+                      fontSize: ClockTile.timeZoneLabelTextSize,
+                      color: Theme
+                          .of(context)
+                          .textTheme
+                          .title
+                          .color,
+                    ),
+                    ),
                 ],
               ),
             ),
