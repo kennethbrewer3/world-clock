@@ -16,8 +16,7 @@ class AddClockBottomSheet extends StatelessWidget {
       value: _loadTimeZoneRegionProvider.loadTimeZoneRegionList(),
       child: Consumer<List<TimeZoneRegion>>(
           builder: (context, timeZoneRegionList, child) {
-        return ChangeNotifierProxyProvider<List<TimeZoneRegion>,
-            AddClockProvider>(
+        return ChangeNotifierProxyProvider<List<TimeZoneRegion>, AddClockProvider>(
           initialBuilder: (_) => AddClockProvider(),
           builder: (_, timeZoneRegionList, futureNotifier) =>
               futureNotifier..timeZoneRegionList = timeZoneRegionList,

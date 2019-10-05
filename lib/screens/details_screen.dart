@@ -16,8 +16,7 @@ class ClockDetails extends StatelessWidget {
         .split("/")
         .last);
     return Provider
-        .of<ClocksProvider>(context)
-        .clocks[clockIndex];
+        .of<List<Clock>>(context)[clockIndex];
   }
 
   @override
@@ -73,6 +72,17 @@ class ClockDetails extends StatelessWidget {
                           .color,
                     ),
                   ),
+                  Text(
+                    clock.timeZone.name,
+                    style: TextStyle(
+                      fontSize: ClockTile.timeZoneLabelTextSize,
+                      color: Theme
+                          .of(context)
+                          .textTheme
+                          .title
+                          .color,
+                    ),
+                    ),
                 ],
               ),
             ),

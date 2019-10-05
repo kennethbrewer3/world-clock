@@ -821,127 +821,122 @@
       "timezones" : [
         {
           "abbreviation" : "A",
-          "name" : "Alpha Time Zone",
+          "name" : "Alpha Time",
           "offset" : "+1"
         },
         {
           "abbreviation" : "B",
-          "name" : "Bravo Time Zone",
+          "name" : "Bravo Time",
           "offset" : "+2"
         },
         {
           "abbreviation" : "D",
-          "name" : "Delta Time Zone",
+          "name" : "Delta Time",
           "offset" : "+4"
         },
         {
           "abbreviation" : "E",
-          "name" : "Echo Time Zone",
+          "name" : "Echo Time",
           "offset" : "+5"
         },
         {
           "abbreviation" : "F",
-          "name" : "Foxtrot Time Zone",
+          "name" : "Foxtrot Time",
           "offset" : "+6"
         },
         {
           "abbreviation" : "G",
-          "name" : "Golf Time Zone",
+          "name" : "Golf Time",
           "offset" : "+7"
         },
         {
           "abbreviation" : "H",
-          "name" : "Hotel Time Zone",
+          "name" : "Hotel Time",
           "offset" : "+8"
         },
         {
           "abbreviation" : "I",
-          "name" : "India Time Zone",
+          "name" : "India Time",
           "offset" : "+9"
         },
         {
           "abbreviation" : "K",
-          "name" : "Kilo Time Zone",
+          "name" : "Kilo Time",
           "offset" : "+10"
         },
         {
           "abbreviation" : "L",
-          "name" : "Lima Time Zone",
+          "name" : "Lima Time",
           "offset" : "+11"
         },
         {
           "abbreviation" : "M",
-          "name" : "Mike Time Zone",
+          "name" : "Mike Time",
           "offset" : "+12"
         },
         {
-          "abbreviation" : "M",
-          "name" : "alpha time zone",
-          "offset" : "+1"
-        },
-        {
           "abbreviation" : "N",
-          "name" : "November Time Zone",
+          "name" : "November Time",
           "offset" : "-1"
         },
         {
           "abbreviation" : "O",
-          "name" : "Oscar Time Zone",
+          "name" : "Oscar Time",
           "offset" : "-2"
         },
         {
           "abbreviation" : "P",
-          "name" : "Papa Time Zone",
+          "name" : "Papa Time",
           "offset" : "-3"
         },
         {
           "abbreviation" : "Q",
-          "name" : "Quebec Time Zone",
+          "name" : "Quebec Time",
           "offset" : "-4"
         },
         {
           "abbreviation" : "R",
-          "name" : "Romeo Time Zone",
+          "name" : "Romeo Time",
           "offset" : "-5"
         },
         {
           "abbreviation" : "S",
-          "name" : "Sierra Time Zone",
+          "name" : "Sierra Time",
           "offset" : "-6"
         },
         {
           "abbreviation" : "T",
-          "name" : "Tango Time Zone",
+          "name" : "Tango Time",
           "offset" : "-7"
         },
         {
           "abbreviation" : "U",
-          "name" : "Uniform Time Zone",
+          "name" : "Uniform Time",
           "offset" : "-8"
         },
         {
           "abbreviation" : "V",
-          "name" : "Victor Time Zone",
+          "name" : "Victor Time",
           "offset" : "-9"
         },
         {
           "abbreviation" : "W",
-          "name" : "Whiskey Time Zone",
+          "name" : "Whiskey Time",
           "offset" : "-10"
         },
         {
           "abbreviation" : "X",
-          "name" : "X-ray Time Zone",
+          "name" : "X-ray Time",
           "offset" : "-11"
         },
         {
           "abbreviation" : "Y",
-          "name" : "Yankee Time Zone",
+          "name" : "Yankee Time",
           "offset" : "-12"
         },
         {
           "abbreviation" : "Z",
-          "name" : "Zulu Time Zone",
+          "name" : "Zulu Time",
           "offset" : "+0"
         }
       ]

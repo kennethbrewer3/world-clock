@@ -12,16 +12,19 @@ class ClockTile extends StatelessWidget {
   final Color dateColor;
   final Color labelColor;
   final Function tapFunction;
+  final Function longPressFunction;
 
   static const clockTextSize = 30.0;
   static const labelTextSize = 30.0;
+  static const timeZoneLabelTextSize = 20.0;
 
   ClockTile({this.clock,
     this.backgroundColor,
     this.timeColor,
     this.dateColor,
     this.labelColor,
-    this.tapFunction});
+    this.tapFunction,
+    this.longPressFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class ClockTile extends StatelessWidget {
         return
           ReusableCard(
             tapFunction: tapFunction,
+            longPressFunction: longPressFunction,
             color: backgroundColor,
             cardChild: Padding(
               padding: const EdgeInsets.symmetric(
@@ -64,6 +68,13 @@ class ClockTile extends StatelessWidget {
                       color: labelColor,
                     ),
                   ),
+                  Text(
+                    clock.timeZone.name,
+                    style: TextStyle(
+                      fontSize: ClockTile.timeZoneLabelTextSize,
+                      color: labelColor,
+                    ),
+                  )
                 ],
               ),
             ),
