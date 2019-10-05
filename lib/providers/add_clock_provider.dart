@@ -6,7 +6,7 @@ import 'package:world_clock/data/clock.dart';
 import 'package:world_clock/data/time_zone.dart';
 import 'package:world_clock/data/time_zone_region.dart';
 import 'package:world_clock/providers/clocks_provider.dart';
-import 'package:world_clock/timezoneloader/duration_parser.dart';
+import 'package:world_clock/utils/duration_parser.dart';
 
 class AddClockProvider with ChangeNotifier {
   List<TimeZoneRegion> _timeZoneRegionList;

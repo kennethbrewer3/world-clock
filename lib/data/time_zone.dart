@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import 'package:world_clock/timezoneloader/duration_parser.dart';
+import 'package:world_clock/utils/duration_parser.dart';
 
 class TimeZone {
   static const String ABBREVIATION_KEY = "abbreviation";

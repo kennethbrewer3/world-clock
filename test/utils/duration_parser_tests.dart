@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:world_clock/timezoneloader/duration_parser.dart';
+import 'package:world_clock/utils/duration_parser.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -52,6 +52,42 @@ void main() {
       String input = "3:45";
       Duration expected = Duration();
       expect(DurationParser.parse(input), expected);
+    });
+
+    test('Test formatting of positive durations with whole hours', () {
+      Duration input = Duration(hours: 3);
+      String expected = "+3:00";
+      expect(DurationParser.formatDuration(input), expected);
+    });
+
+    test('Test formatting of negative durations with whole hours', () {
+      Duration input = Duration(hours: -3);
+      String expected = "-3:00";
+      expect(DurationParser.formatDuration(input), expected);
+    });
+
+    test('Test formatting of positive durations with hours and minutes', () {
+      Duration input = Duration(hours: 3, minutes: 30);
+      String expected = "+3:30";
+      expect(DurationParser.formatDuration(input), expected);
+    });
+
+    test('Test formatting of negative durations with hours and minutes', () {
+      Duration input = Duration(hours: -3, minutes: -30);
+      String expected = "-3:30";
+      expect(DurationParser.formatDuration(input), expected);
+    });
+
+    test('Test formatting of positive durations with hours and small minutes', () {
+      Duration input = Duration(hours: 3, minutes: 5);
+      String expected = "+3:05";
+      expect(DurationParser.formatDuration(input), expected);
+    });
+
+    test('Test formatting of negative durations with hours and small minutes', () {
+      Duration input = Duration(hours: -3, minutes: -5);
+      String expected = "-3:05";
+      expect(DurationParser.formatDuration(input), expected);
     });
   });
 }

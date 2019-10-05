@@ -52,7 +52,7 @@ class DurationParser {
   static String formatDuration(Duration duration) {
     Duration minutesDuration = duration - Duration(hours: duration.inHours);
     String sign = duration.isNegative ? "" : "+";
-    String minutes = (minutesDuration.inMinutes < 10
+    String minutes = (minutesDuration.inMinutes.abs() < 10
         ? "0${minutesDuration.inMinutes}"
         : "${minutesDuration.inMinutes}");
     return "$sign${duration.inHours}:${minutes.replaceAll("-", "")}";
